@@ -1,0 +1,70 @@
+conn = new Mongo();
+db = conn.getDB("cpen322-messenger");
+db.dropDatabase();
+imgHost = '/';
+
+result = db.chatrooms.insert([
+	{
+		_id: 'room-1',
+		name: 'Everyone in CPEN320',
+	},
+	{
+		_id: 'room-2',
+		name: 'CPEN 320 Project',
+	},
+	{
+		_id: 'room-3',
+		name: 'TA Help',
+	},
+	{
+		_id: 'room-4',
+		name: 'Off Topic',
+	}
+]);
+
+print(result);
+
+
+const now = Date.now();
+result = db.conversations.insert([
+	{
+		room_id: 'room-1',
+		timestamp: now,
+		messages: [
+			{ username: 'john', text: 'Welcome to the CPEN320 general chat! Announcements and important info will be posted here.' },
+			{ username: 'bob', text: 'Hi everyone! Don’t forget to check the pinned messages for deadlines.' },
+			{ username: 'charlie', text: 'If you have questions about the course, feel free to ask here.' }
+		]
+	},
+	{
+		room_id: 'room-2',
+		timestamp: now,
+		messages: [
+			{ username: 'alice', text: 'Let’s review our project milestones. I can work on the frontend and UI.' },
+			{ username: 'bob', text: 'I’m handling the backend API and database integration.' },
+			{ username: 'charlie', text: 'I’ll focus on the AI features.' },
+			{ username: 'alice', text: 'Great! Let’s aim to have a working demo by next week.' }
+		]
+	},
+	{
+		room_id: 'room-3',
+		timestamp: now,
+		messages: [
+			{ username: 'alice', text: 'Hi TA, I’m having trouble with the login authentication. Can you help?' },
+			{ username: 'bob', text: 'Same here, my session keeps expiring.' },
+			{ username: 'charlie', text: 'The TA suggested checking the cookie settings in the last lab.' },
+			{ username: 'ta', text: 'Please post your error messages and I’ll take a look!' }
+		]
+	},
+	{
+		room_id: 'room-4',
+		timestamp: now,
+		messages: [
+			{ username: 'bob', text: 'Anyone watching the new sci-fi show tonight?' },
+			{ username: 'charlie', text: 'I’m planning to! Also, who’s up for a board game after class?' },
+			{ username: 'alice', text: 'Count me in for games! Need a break from coding.' }
+		]
+	}
+]);
+
+print(result);
