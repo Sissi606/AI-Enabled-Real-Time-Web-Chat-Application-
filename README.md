@@ -1,8 +1,10 @@
-# CPEN 322 Chat App with Local AI Features
+# Chat App with Local AI Features
 
 
 This project is a real-time chat application with local AI features powered by LM Studio.
 
+## Demo
+![Demo](assets/demo.gif)
 
 ## Features
 
